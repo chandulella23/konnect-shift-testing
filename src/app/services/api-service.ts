@@ -15,7 +15,7 @@ export class ApiService extends BaseService {
   private socket = io('http://localhost:3000');
 
   getFleets(): Observable<any> {
-    return this.http.get('https://localhost:3000/api/v1/getFleets', this.get())
+    return this.http.get('http://demo6781013.mockable.io/getFleets', this.get())
       .pipe(map(res => res.json()),
         catchError(err => throwError(err)));
   }

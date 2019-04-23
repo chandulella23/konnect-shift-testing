@@ -158,30 +158,11 @@
 
     <div class="container-fluid px-0">
       <div class="container-map">
-        <!-- <div class="mapouter">
-          <div class="gmap_canvas"><iframe width="100%" height="100%" id="gmap_canvas"
-              src="https://maps.google.com/maps?q=hyderabad&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
-              scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net"></a>
-          </div>
-
-          <style>
-            .mapouter {
-              text-align: right;
-              height: 650px;
-              width: 100%;
-            }
-
-            .gmap_canvas {
-              overflow: hidden;
-              background: none !important;
-              height: 100%;
-              width: 100%;
-            }
-          </style>
-        </div> -->
-        <div class="gmap_canvas">
-            <agm-map [latitude]="lat" [longitude]="lng"  style="height:1200px">
-                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <div  class="gmap_canvas">
+            <agm-map style="height:1200px" [fitBounds]="true">
+                <agm-marker *ngFor="let location of locations; let i =index"
+                [latitude]="location.lat" [longitude]="location.long"
+                [agmFitBounds]="true"></agm-marker>
               </agm-map>
         </div>
       </div>
@@ -192,43 +173,9 @@
     <div *ngFor="let fleet of fleets" class="section_sliding_menu">
       <h5>{{fleet.id}}</h5>
       <span class="name_driver">{{fleet.name}}</span>
-      <label>{{fleet.currentPlace}}</label>
+      <label>{{fleet.location.currentPlace}}</label>
     </div>
-    <div class="section_sliding_menu">
-      <h5>Volvo 2345</h5>
-      <span class="name_driver">Tonya Mckenzie</span>
-      <label>Borden (CA)</label>
-    </div>
-    <div class="section_sliding_menu">
-      <h5>Volvo 4862</h5>
-      <span class="name_driver">Stephen O'Neill</span>
-      <label>Whitchurch-Stouffville, ON</label>
-    </div>
-    <div class="section_sliding_menu">
-      <h5>Ford 7923</h5>
-      <span class="name_driver">Stephen O'Neill</span>
-      <label>Whitchurch-Stouffville, ON</label>
-    </div>
-    <div class="section_sliding_menu">
-      <h5>Volvo 2323</h5>
-      <span class="name_driver">Stephen O'Neill</span>
-      <label>Whitchurch-Stouffville, ON</label>
-    </div>
-    <div class="section_sliding_menu">
-      <h5>Ford 2549</h5>
-      <span class="name_driver">Stephen O'Neill</span>
-      <label>Whitchurch-Stouffville, ON</label>
-    </div>
-    <div class="section_sliding_menu">
-      <h5>Freightliner 7846</h5>
-      <span class="name_driver">Stephen O'Neill</span>
-      <label>Whitchurch-Stouffville, ON</label>
-    </div>
-    <div class="section_sliding_menu">
-      <h5>Toyota Truck 23</h5>
-      <span class="name_driver">Stephen O'Neill</span>
-      <label>Whitchurch-Stouffville, ON</label>
-    </div>
+
   </div>
   <!-- Main Body Ends -->
 </div>
