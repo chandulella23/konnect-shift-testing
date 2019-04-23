@@ -1,0 +1,234 @@
+<div class="wrapper">
+  <!-- Header -->
+  <header class="header-block">
+    <div class="container-fluid px-0">
+      <div class="header-inner">
+        <!-- side nav opener -->
+        <!-- <div class="sidenav_toggle_btn">
+                      <span></span>
+                  </div> -->
+        <div class="dash-icon d-md-none">
+          <span class="dash-icon-inner"></span>
+        </div>
+        <!-- side nav opener -->
+        <!-- logo -->
+        <div class="logo">
+          <a href="javascript:void(0);">
+            <img src="./../../../assets/images/logo.png" alt="Konnect shift" />
+          </a>
+        </div>
+        <!-- logo -->
+        <div class="head-right-section">
+          <div class="head-right-inner">
+            <nav class="navigation-head">
+              <ul>
+                <li class="active">
+                  <a class="custom-nav-tabs active" href="javascript:void(0);">Overview</a>
+                </li>
+                <li>
+                  <a class="custom-nav-tabs" href="javascript:void(0);">Report</a>
+                </li>
+                <li>
+                  <a class="custom-nav-tabs" href="javascript:void(0);">Maintenance</a>
+                </li>
+                <li>
+                  <a class="custom-nav-tabs" href="javascript:void(0);">Settings</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="notification-block">
+              <ul>
+                <li>
+                  <a href="javascript:void(0);">
+                    <span class="fa fa-life-ring"></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);">
+                    <span class="fa fa-comments"></span>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:void(0);" class="active">
+                    <span class="fa fa-bell"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="profile-top">
+              <a href="javascript:void(0);">
+                <label class="user-name">John Doe <span class="fa fa-angle-down"></span></label>
+                <img src="./../../../assets/images/46.jpg" alt="user_profile">
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="menu-icon d-md-none">
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Side Menu -->
+  <aside class="side-menu">
+    <div class="aside-inner">
+
+      <ul>
+        <li class="active">
+          <a href="javascript:void(0);">Fleets</a>
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <a href="javascript:void(0);">Vehicles</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">Assets</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">Drivers</a>
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <a href="javascript:void(0);">Trips</a>
+        </li>
+        <li>
+          <a href="javascript:void(0);">Dispatch</a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- container main -->
+  <div class="container_bg">
+    <div class="top-bar">
+      <ul>
+        <li class="top_listing">
+          <div class="search-top">
+            <div class="form-block">
+              <div class="input-container-1">
+                <span class="icon fa fa-search search"></span>
+                <input placeholder="Search" [(ngModel)]='searchText' type="text" name="search" class="search_input" (keyup)='searchData()'/>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="top_listing">
+          <div class="form-block">
+            <select class="selectpicker form-control select_custom">
+              <option value="" selected disabled hidden>Fleets</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </li>
+        <li class="top_listing">
+          <div class="form-block">
+            <select class="selectpicker form-control select_custom">
+              <option value="" selected disabled hidden>Vehicle Type</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </li>
+        <li class="top_listing">
+          <div class="form-block">
+            <select class="selectpicker form-control select_custom">
+              <option value="" selected disabled hidden>Vehicle Status</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="container-fluid px-0">
+      <div class="container-map">
+        <!-- <div class="mapouter">
+          <div class="gmap_canvas"><iframe width="100%" height="100%" id="gmap_canvas"
+              src="https://maps.google.com/maps?q=hyderabad&t=&z=15&ie=UTF8&iwloc=&output=embed" frameborder="0"
+              scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.net"></a>
+          </div>
+
+          <style>
+            .mapouter {
+              text-align: right;
+              height: 650px;
+              width: 100%;
+            }
+
+            .gmap_canvas {
+              overflow: hidden;
+              background: none !important;
+              height: 100%;
+              width: 100%;
+            }
+          </style>
+        </div> -->
+        <div class="gmap_canvas">
+            <agm-map [latitude]="lat" [longitude]="lng"  style="height:1200px">
+                <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+              </agm-map>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sliding_menu">
+    <div *ngFor="let fleet of fleets" class="section_sliding_menu">
+      <h5>{{fleet.id}}</h5>
+      <span class="name_driver">{{fleet.name}}</span>
+      <label>{{fleet.currentPlace}}</label>
+    </div>
+    <div class="section_sliding_menu">
+      <h5>Volvo 2345</h5>
+      <span class="name_driver">Tonya Mckenzie</span>
+      <label>Borden (CA)</label>
+    </div>
+    <div class="section_sliding_menu">
+      <h5>Volvo 4862</h5>
+      <span class="name_driver">Stephen O'Neill</span>
+      <label>Whitchurch-Stouffville, ON</label>
+    </div>
+    <div class="section_sliding_menu">
+      <h5>Ford 7923</h5>
+      <span class="name_driver">Stephen O'Neill</span>
+      <label>Whitchurch-Stouffville, ON</label>
+    </div>
+    <div class="section_sliding_menu">
+      <h5>Volvo 2323</h5>
+      <span class="name_driver">Stephen O'Neill</span>
+      <label>Whitchurch-Stouffville, ON</label>
+    </div>
+    <div class="section_sliding_menu">
+      <h5>Ford 2549</h5>
+      <span class="name_driver">Stephen O'Neill</span>
+      <label>Whitchurch-Stouffville, ON</label>
+    </div>
+    <div class="section_sliding_menu">
+      <h5>Freightliner 7846</h5>
+      <span class="name_driver">Stephen O'Neill</span>
+      <label>Whitchurch-Stouffville, ON</label>
+    </div>
+    <div class="section_sliding_menu">
+      <h5>Toyota Truck 23</h5>
+      <span class="name_driver">Stephen O'Neill</span>
+      <label>Whitchurch-Stouffville, ON</label>
+    </div>
+  </div>
+  <!-- Main Body Ends -->
+</div>
